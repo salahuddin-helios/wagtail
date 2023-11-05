@@ -1,0 +1,24 @@
+{% load wagtailcore_tags %}
+
+<article>
+    <p>{{page.date}}</p>
+    <p>{{page.author}}</p>
+    {% if  settings.home.socialmediasetting.facebook%}
+    <a href="{{settings.home.socialmediasetting.facebook}}">
+        <i class="fa-brands fa-facebook"></i>
+        Facebook
+    </a>
+    {% endif %}
+
+    {% if  settings.home.socialmediasetting.youtube%}
+    <a href="{{settings.home.socialmediasetting.youtube}}">
+        <i class="fa-brands fa-Youtube"></i>
+        Youtube
+    </a>
+    {% endif %}
+    {% for block in page.body %}
+            <section class="block-{{ block.block_type }}">
+                {% include_block block %}
+            </section>
+    {% endfor %}
+</article>
